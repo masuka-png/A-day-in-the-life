@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dxuhabi2w3y15"]
+
+[ext_resource type="Texture2D" uid="uid://1p2p3hhd5h3" path="res://Assets/pixil-frame-0 (32).png" id="1_bwyfi"]
+[ext_resource type="Script" uid="uid://c7yf8red0cg5w" path="res://Scripts/game_level.gd" id="1_ibsu8"]
+[ext_resource type="PackedScene" uid="uid://cty37ixcyim3n" path="res://Scenes/key_listener.tscn" id="3_qsd0w"]
+[ext_resource type="AudioStream" uid="uid://t05pvgnyckso" path="res://Sounds/fire-alarm_frlER9H.mp3" id="4_qsd0w"]
+[ext_resource type="Texture2D" uid="uid://dv142gildftxm" path="res://Assets/pixil-frame-0 (33).png" id="5_efyo6"]
+[ext_resource type="Texture2D" uid="uid://bdmspxkjiobpy" path="res://Assets/pixil-frame-0 (34).png" id="6_wqyo1"]
+
+[node name="GameLevel" type="Node2D" unique_id=876097469]
+script = ExtResource("1_ibsu8")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1149785635]
+
+[node name="PixilFrame0(32)" type="Sprite2D" parent="." unique_id=459219560]
+texture_filter = 1
+position = Vector2(3.4999938, -2.9999998)
+scale = Vector2(5.023437, 5.03125)
+texture = ExtResource("1_bwyfi")
+
+[node name="KeyListener" parent="." unique_id=764265895 instance=ExtResource("3_qsd0w")]
+position = Vector2(-124, 278)
+
+[node name="KeyListener2" parent="." unique_id=632419042 instance=ExtResource("3_qsd0w")]
+position = Vector2(123, 265)
+rotation = 3.1415927
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1678602228]
+offset_left = -210.0
+offset_top = -220.0
+offset_right = 213.0
+offset_bottom = -193.0
+
+[node name="PressSound" type="AudioStreamPlayer2D" parent="." unique_id=777364611]
+stream = ExtResource("4_qsd0w")
+
+[node name="PixilFrame0(33)" type="Sprite2D" parent="." unique_id=50781688]
+texture_filter = 1
+position = Vector2(-247, 272)
+scale = Vector2(7.0946217, 6.412754)
+texture = ExtResource("5_efyo6")
+
+[node name="PixilFrame0(34)" type="Sprite2D" parent="." unique_id=1023697531]
+texture_filter = 1
+position = Vector2(250.00002, 279)
+scale = Vector2(5.8905964, 7.1833897)
+texture = ExtResource("6_wqyo1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=612159146]
+offset_left = -182.0
+offset_top = -296.0
+offset_right = 173.0
+offset_bottom = -236.0
+scale = Vector2(1.0268219, 0.8193565)
+text = "WAKE UP"
+tab_size = 6
+horizontal_alignment = 1
+vertical_alignment = 1

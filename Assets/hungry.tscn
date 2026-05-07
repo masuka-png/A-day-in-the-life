@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://28sg2ln1fhxo"]
+
+[ext_resource type="Script" uid="uid://dpwkl13gxlmbq" path="res://Materials/menu.gd" id="1_oja81"]
+[ext_resource type="Texture2D" uid="uid://cchke2hfonx23" path="res://Assets/pixil-frame-0 (40).png" id="2_r6qcn"]
+[ext_resource type="Texture2D" uid="uid://baqfr2ctaww0w" path="res://Assets/pixil-frame-0 (55).png" id="3_pfk4e"]
+[ext_resource type="Texture2D" uid="uid://bef3pra7a6u82" path="res://Assets/pixil-frame-0 (27).png" id="4_cbfee"]
+
+[node name="Node2D" type="Node2D" unique_id=1335338071]
+script = ExtResource("1_oja81")
+
+[node name="PixilFrame0(40)" type="Sprite2D" parent="." unique_id=138014554]
+position = Vector2(592, 323)
+scale = Vector2(41.4375, 24.28125)
+texture = ExtResource("2_r6qcn")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=492829111]
+position = Vector2(575, 328)
+
+[node name="PixilFrame0(55)" type="Sprite2D" parent="." unique_id=1780345559]
+texture_filter = 1
+position = Vector2(568.99994, 266.99997)
+scale = Vector2(22.714415, 13.202988)
+texture = ExtResource("3_pfk4e")
+
+[node name="PixilFrame0(27)" type="Sprite2D" parent="." unique_id=1353803004]
+texture_filter = 1
+position = Vector2(1046, 574.00006)
+rotation = 3.1415927
+scale = Vector2(8.441277, 8.15804)
+texture = ExtResource("4_cbfee")
+
+[node name="Button" type="Button" parent="PixilFrame0(27)" unique_id=1238955308]
+visibility_layer = 0
+offset_left = -9.193153
+offset_top = -6.891526
+offset_right = 9.421585
+offset_bottom = 4.865882
+
+[connection signal="pressed" from="PixilFrame0(27)/Button" to="." method="hungry_on_button_pressed"]

@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://ckn5wonqpnifg"]
+
+[ext_resource type="Texture2D" uid="uid://bwijb2eovrm5q" path="res://Assets/B75I3992_2024-11-24-232552_sfrg.jpg" id="1_dmeew"]
+[ext_resource type="Script" uid="uid://dpwkl13gxlmbq" path="res://Materials/menu.gd" id="1_wyui8"]
+[ext_resource type="Texture2D" uid="uid://pl8ao8cjwhr3" path="res://Assets/pixil-frame-0 (50).png" id="2_wyui8"]
+[ext_resource type="Texture2D" uid="uid://2mce48eg51uc" path="res://Assets/pixil-frame-0 (51).png" id="3_e5siw"]
+[ext_resource type="Texture2D" uid="uid://c531wfa7iu7gx" path="res://Assets/pixil-frame-0 (49).png" id="4_7swyu"]
+[ext_resource type="AudioStream" uid="uid://cnhrggqlejo4n" path="res://Assets/Monkeys-Spinning-Monkeys(chosic.com).mp3" id="6_idohh"]
+
+[node name="Node2D" type="Node2D" unique_id=99894689]
+script = ExtResource("1_wyui8")
+
+[node name="B75i399220241124232552Sfrg" type="Sprite2D" parent="." unique_id=1580593820]
+position = Vector2(578, 322)
+scale = Vector2(2.3, 1.9574468)
+texture = ExtResource("1_dmeew")
+
+[node name="PixilFrame0(50)" type="Sprite2D" parent="." unique_id=1283543694]
+texture_filter = 1
+position = Vector2(289.00003, 336)
+scale = Vector2(8.890625, 7.234375)
+texture = ExtResource("2_wyui8")
+
+[node name="PixilFrame0(51)" type="Sprite2D" parent="." unique_id=1948971538]
+texture_filter = 1
+position = Vector2(913, 455)
+scale = Vector2(10.019179, 6.151085)
+texture = ExtResource("3_e5siw")
+
+[node name="Button" type="Button" parent="PixilFrame0(51)" unique_id=1008970131]
+visibility_layer = 0
+offset_left = -17.965544
+offset_top = -13.818701
+offset_right = -9.965544
+offset_bottom = -5.818701
+scale = Vector2(4.6153502, 1.5435972)
+
+[node name="PixilFrame0(49)" type="Sprite2D" parent="." unique_id=1651357825]
+texture_filter = 1
+position = Vector2(910, 314)
+scale = Vector2(11.48205, 6.886307)
+texture = ExtResource("4_7swyu")
+
+[node name="Button" type="Button" parent="PixilFrame0(49)" unique_id=1003676832]
+visibility_layer = 0
+offset_left = -15.676643
+offset_top = -11.907689
+offset_right = -7.6766434
+offset_bottom = -3.907689
+scale = Vector2(3.879557, 1.403648)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=436365376]
+stream = ExtResource("6_idohh")
+autoplay = true
+
+[connection signal="pressed" from="PixilFrame0(51)/Button" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="PixilFrame0(49)/Button" to="." method="_on_start_pressed"]

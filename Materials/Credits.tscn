@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://domon4kabtqly"]
+
+[ext_resource type="Script" uid="uid://dpwkl13gxlmbq" path="res://Materials/menu.gd" id="1_5hnrj"]
+[ext_resource type="Texture2D" uid="uid://bwijb2eovrm5q" path="res://Assets/B75I3992_2024-11-24-232552_sfrg.jpg" id="1_ctlra"]
+[ext_resource type="Texture2D" uid="uid://bef3pra7a6u82" path="res://Assets/pixil-frame-0 (27).png" id="2_5hnrj"]
+
+[node name="Node2D" type="Node2D" unique_id=1114804615]
+script = ExtResource("1_5hnrj")
+
+[node name="B75i399220241124232552Sfrg" type="Sprite2D" parent="." unique_id=2093812639]
+position = Vector2(578, 326)
+scale = Vector2(2.3215725, 2.0626085)
+texture = ExtResource("1_ctlra")
+
+[node name="Label" type="Label" parent="." unique_id=1454621635]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -38.99997
+offset_top = 285.0
+offset_right = 197.8129
+offset_bottom = 342.46494
+scale = Vector2(2.2211626, 2.088229)
+text = "Sam Enright
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PixilFrame0(27)" type="Sprite2D" parent="." unique_id=1404573541]
+texture_filter = 1
+position = Vector2(125, 74)
+scale = Vector2(8.4375, 6.25)
+texture = ExtResource("2_5hnrj")
+
+[node name="Button" type="Button" parent="PixilFrame0(27)" unique_id=197320548]
+visibility_layer = 0
+offset_left = -9.955556
+offset_top = -7.8399997
+offset_right = 10.429629
+offset_bottom = 5.440001
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=543109497]
+position = Vector2(576, 314)
+
+[connection signal="pressed" from="PixilFrame0(27)/Button" to="." method="_on_back_pressed"]

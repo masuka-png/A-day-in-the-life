@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cfs4qed4rn78x"]
+
+[ext_resource type="Texture2D" uid="uid://cchke2hfonx23" path="res://Assets/pixil-frame-0 (40).png" id="1_tre12"]
+[ext_resource type="Texture2D" uid="uid://hmsca23o2xbi" path="res://Assets/pixil-frame-0 (54).png" id="2_cm8tt"]
+
+[node name="Node2D" type="Node2D" unique_id=291155490]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1639719538]
+position = Vector2(573, 320)
+
+[node name="PixilFrame0(40)" type="Sprite2D" parent="." unique_id=305642597]
+position = Vector2(576, 341.00003)
+scale = Vector2(40.30639, 23.033966)
+texture = ExtResource("1_tre12")
+
+[node name="PixilFrame0(54)" type="Sprite2D" parent="." unique_id=633708316]
+texture_filter = 1
+position = Vector2(588, 334.00003)
+scale = Vector2(15.11849, 14.846835)
+texture = ExtResource("2_cm8tt")
