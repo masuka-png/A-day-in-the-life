@@ -32,6 +32,8 @@ This process of making this game really thought me alot about how to make games 
 ***Code Examples***
 
 Centra.gd
+
+````
 extends CanvasLayer
 
 
@@ -201,4 +203,154 @@ func _on_submit_pressed() -> void:
 
 	current_index = 0
 	update_display()
+````
+
+
+Player.gd
+
+````
+extends CharacterBody3D
+
+
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+const SENSITIVITY = 0.03
+
+var gravity = 9.8
+
+@onready var head = $Head
+@onready var camera = $Head/Camera3D
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		head.rotate_y(-event.relative.x * SENSITIVITY)
+		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		
+
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir := Input.get_vector("left", "right", "up", "down")
+	var direction: Vector3 = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	move_and_slide()
+
+
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if body.name == "Player": get_tree().change_scene_to_file("res://Assets/hungry.tscn")
+````
+
+Menu.gd
+
+````
+
+extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_credits_pressed() -> void:
+	get_tree().change_scene_to_file("res://Materials/Credits.tscn")
+
+
+func _on_start_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/game_level.tscn")
+
+
+func _on_back_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Menu.tscn")
+	pass # Replace with function body.
+	
+
+
+func _on_late_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Bus.tscn")
+
+
+func hungry_on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/centra.tscn")
+	pass # Replace with function body.
+````
+Alarm.gd
+
+````
+extends Node
+
+@onready var progress_bar = $ProgressBar
+@onready var press_sound = $PressSound
+
+var progress := 0.0
+var max_progress := 100.0
+var increase_amount := 2.0
+var decay_rate := 6.0
+
+var completed := false
+
+func _process(delta):
+	if not completed:
+		# Only decay if not completed
+		progress -= decay_rate * delta
+		progress = clamp(progress, 0, max_progress)
+
+	progress_bar.value = progress
+
+	if not completed and progress >= max_progress:
+		completed = true
+		on_completed()
+
+var last_key := ""
+
+func _input(event):
+	if event.is_action_pressed("press_q"):
+		if last_key != "q":
+			progress += increase_amount
+			last_key = "q"
+
+	elif event.is_action_pressed("press_e"):
+		if last_key != "e":
+			progress += increase_amount
+			last_key = "e"
+
+		#press_sound.pitch_scale = randf_range(0.9, 1.1)
+		#press_sound.play()
+		
+func on_completed():
+	print("Completed!")
+	get_tree().change_scene_to_file("res://Assets/late.tscn")
+
+
+	var style = StyleBoxFlat.new()
+	style.bg_color = Color(0, 1, 0)  # green
+	progress_bar.add_theme_stylebox_override("fill", style)
+````
 
